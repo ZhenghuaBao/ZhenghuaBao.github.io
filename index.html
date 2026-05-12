@@ -9,8 +9,48 @@
   <meta property="og:title" content="Zhenghua Bao">
   <meta property="og:description" content="Multimodal AI engineer at FlashLabs — end-to-end speech, voice cloning, LLM reasoning.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zhenghuabao.github.io">
+  <meta property="og:image" content="https://zhenghuabao.github.io/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Zhenghua Bao">
+  <meta name="twitter:description" content="Multimodal AI engineer at FlashLabs — end-to-end speech, voice cloning, LLM reasoning.">
+  <meta name="twitter:image" content="https://zhenghuabao.github.io/og-image.png">
 
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Zhenghua Bao",
+    "alternateName": "包正华",
+    "jobTitle": "Multimodal AI Engineer",
+    "worksFor": {
+      "@type": "Organization",
+      "name": "FlashLabs",
+      "url": "https://www.flashlabs.ai/"
+    },
+    "alumniOf": {
+      "@type": "EducationalOrganization",
+      "name": "Technische Universität Darmstadt"
+    },
+    "url": "https://zhenghuabao.github.io",
+    "sameAs": [
+      "https://scholar.google.com/citations?user=hLMWOOoAAAAJ&hl=en",
+      "https://github.com/ZhenghuaBao"
+    ],
+    "email": "zheng.hua.b@gmail.com",
+    "knowsAbout": [
+      "End-to-end Speech Models",
+      "Voice Cloning",
+      "Retrieval-Augmented Generation",
+      "Multimodal AI",
+      "Multi-Agent Reinforcement Learning"
+    ]
+  }
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -255,6 +295,8 @@
       color: var(--ink-soft);
       font-size: 0.9875rem;
     }
+
+    .section-intro--spaced { margin-bottom: 0.75rem; }
 
     /* ---------- Keywords ---------- */
 
@@ -603,7 +645,7 @@
         FlashLabs
       </p>
       <p class="bio">
-        I work in the research department at FlashLabs in Shanghai, where I co-lead Chroma — a real-time end-to-end speech model with personalized voice cloning. My interests sit at the intersection of <em>speech, language, and reasoning</em>, with ongoing work on retrieval-augmented LLMs (IndexRAG). I completed MSc degrees in CS (AI) and Internet &amp; Web Systems at TU Darmstadt.
+        I work in the research department at FlashLabs in Shanghai, where I co-lead Chroma — a real-time end-to-end speech model with personalized voice cloning. My interests sit at the intersection of <em>speech, language, and reasoning</em>, with ongoing work on retrieval-augmented LLMs (IndexRAG). I completed MSc degrees in CS (AI) and Internet &amp; Web-based Systems at TU Darmstadt.
       </p>
     </header>
 
@@ -728,8 +770,16 @@
           <span>Joined <a href="https://www.flashlabs.ai/" target="_blank" rel="noopener">FlashLabs</a> in Shanghai as a Multimodal AI Engineer.</span>
         </div>
         <div class="news-item">
+          <span class="news-date">2025.11</span>
+          <span>Completed MSc in Computer Science (AI) at TU Darmstadt.</span>
+        </div>
+        <div class="news-item">
           <span class="news-date">2025.09</span>
           <span><em>NeuroTTT</em> preprint released on <a href="https://arxiv.org/abs/2509.26301" target="_blank" rel="noopener">arXiv</a>.</span>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2024.10</span>
+          <span>Completed MSc in Internet and Web-based Systems at TU Darmstadt.</span>
         </div>
         <div class="news-item">
           <span class="news-date">2024</span>
@@ -754,7 +804,7 @@
       <div class="section-head">
         <span class="section-num">§ 04 / CONTACT</span>
       </div>
-      <p class="section-intro" style="margin-bottom: 0.75rem;">
+      <p class="section-intro section-intro--spaced">
         Drop me a line — I'm always happy to chat about speech, retrieval, or anything between research and shipping.
       </p>
       <div class="contact-list">
@@ -765,10 +815,21 @@
     </section>
 
     <footer class="footer">
-      <span>Last updated · May 2026</span>
+      <span id="last-updated">Last updated · May 2026</span>
       <span><span class="signal">●</span> Online</span>
     </footer>
 
   </main>
+
+  <script>
+    (function () {
+      var el = document.getElementById('last-updated');
+      if (!el) return;
+      var d = new Date();
+      var months = ['January','February','March','April','May','June',
+                    'July','August','September','October','November','December'];
+      el.textContent = 'Last updated · ' + months[d.getMonth()] + ' ' + d.getFullYear();
+    })();
+  </script>
 </body>
 </html>
