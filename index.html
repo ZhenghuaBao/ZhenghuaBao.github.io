@@ -459,6 +459,45 @@
       color: var(--ink);
     }
 
+    /* Grouped news item: paper title with sub-timeline */
+    .news-paper-title {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.0625rem;
+      line-height: 1.35;
+      color: var(--ink);
+      margin-bottom: 0.7rem;
+      letter-spacing: -0.005em;
+    }
+
+    .news-timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      padding-left: 0.875rem;
+      border-left: 1px solid var(--rule-strong);
+    }
+
+    .news-sub {
+      display: grid;
+      grid-template-columns: 4.5rem 1fr;
+      gap: 0.75rem;
+      font-size: 0.875rem;
+      color: var(--ink-soft);
+      line-height: 1.55;
+    }
+
+    @media (max-width: 600px) {
+      .news-sub { grid-template-columns: 4rem 1fr; gap: 0.6rem; }
+    }
+
+    .news-sub-date {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      padding-top: 2px;
+    }
+
     /* ---------- Contact ---------- */
 
     .contact-list {
@@ -555,7 +594,7 @@
         FlashLabs
       </p>
       <p class="bio">
-        I work on <em>end-to-end speech generation and multimodal AI</em> at FlashLabs in Shanghai, where I co-lead Chroma — a real-time spoken dialogue model with personalized voice cloning. My broader interests span LLM reasoning, retrieval-augmented generation, and multi-agent learning. I hold MSc degrees in Computer Science (AI) and Internet &amp; Web Systems from TU Darmstadt.
+        I work in the research department at FlashLabs in Shanghai, where I co-lead Chroma — a real-time end-to-end speech model with personalized voice cloning. My interests sit at the intersection of <em>speech, language, and reasoning</em>, with ongoing work on retrieval-augmented LLMs (IndexRAG). I completed MSc degrees in CS (AI) and Internet &amp; Web Systems at TU Darmstadt.
       </p>
     </header>
 
@@ -564,13 +603,13 @@
         <span class="section-num">§ 01 / RESEARCH</span>
       </div>
       <p class="section-intro">
-        I build systems that reason and speak — currently focused on end-to-end speech models with personalized voice cloning, and retrieval-augmented LLMs that handle cross-document reasoning at index time. Past work covers multi-agent reinforcement learning on graphs and test-time adaptation for foundation models.
+        I build systems that reason and speak. My current work centers on two threads: end-to-end speech models that can clone a speaker from seconds of audio (Chroma), and retrieval architectures that pre-compute cross-document inference at index time (IndexRAG). Earlier work explored multi-agent reinforcement learning with graph neural networks — specifically, generalization across unseen network topologies — and test-time adaptation for EEG foundation models.
       </p>
       <div class="keywords">
         <span class="keyword">speech generation</span>
         <span class="keyword">voice cloning</span>
         <span class="keyword">RAG</span>
-        <span class="keyword">LLM agents</span>
+        <span class="keyword">multimodal AI</span>
         <span class="keyword">multi-agent RL</span>
       </div>
     </section>
@@ -585,11 +624,11 @@
           <div class="pub-year">2026</div>
           <div class="pub-body">
             <h3 class="pub-title">FlashLabs Chroma 1.0: A Real-Time End-to-End Spoken Dialogue Model with Personalized Voice Cloning</h3>
-            <p class="pub-authors">T. Chen*, T. Chen*, K. Shen*, <strong>Z. Bao*</strong>, Z. Zhang, M. Yuan, Y. Shi</p>
+            <p class="pub-authors">Tanyu Chen*, Tairan Chen*, Kai Shen*, <strong>Zhenghua Bao*</strong>, Zhihui Zhang, Man Yuan, Yi Shi</p>
             <p class="pub-venue">
               InterSpeech 2026
               <span class="badge badge--scan">Under Review</span>
-              <span class="badge">Co-First</span>
+              <span class="badge">Co-First Author</span>
             </p>
             <div class="pub-links">
               <a href="https://arxiv.org/abs/2601.11141" target="_blank" rel="noopener">arXiv</a>
@@ -604,11 +643,11 @@
           <div class="pub-year">2026</div>
           <div class="pub-body">
             <h3 class="pub-title">IndexRAG: Bridging Facts for Cross-Document Reasoning at Index Time</h3>
-            <p class="pub-authors"><strong>Z. Bao</strong>, Y. Shi</p>
+            <p class="pub-authors"><strong>Zhenghua Bao</strong>, Yi Shi</p>
             <p class="pub-venue">
               EMNLP 2026
               <span class="badge badge--scan">Under Review</span>
-              <span class="badge">First</span>
+              <span class="badge">First Author</span>
             </p>
             <div class="pub-links">
               <a href="https://arxiv.org/abs/2603.16415" target="_blank" rel="noopener">arXiv</a>
@@ -620,7 +659,7 @@
           <div class="pub-year">2025</div>
           <div class="pub-body">
             <h3 class="pub-title">NeuroTTT: Bridging Pretrain–Downstream Task Misalignment in EEG Foundation Models via Test-Time Training</h3>
-            <p class="pub-authors">S. Wang, Y. Deng, <strong>Z. Bao</strong>, X. Zhan, Y. Duan</p>
+            <p class="pub-authors">Suli Wang, Yangshen Deng, <strong>Zhenghua Bao</strong>, Xinyu Zhan, Yiqun Duan</p>
             <p class="pub-venue">
               NeurIPS 2026
               <span class="badge badge--scan">Under Review</span>
@@ -636,8 +675,8 @@
           <div class="pub-year">2024</div>
           <div class="pub-body">
             <h3 class="pub-title">Towards Generalizability of Multi-Agent Reinforcement Learning in Graphs with Recurrent Message Passing</h3>
-            <p class="pub-authors">J. Weil, <strong>Z. Bao</strong>, O. Abboud, T. Meuser</p>
-            <p class="pub-venue"><span class="venue-name">AAMAS 2024</span></p>
+            <p class="pub-authors">Jannis Weil, <strong>Zhenghua Bao</strong>, Osama Abboud, Tobias Meuser</p>
+            <p class="pub-venue"><span class="venue-name">AAMAS 2024</span><span class="badge">Oral</span></p>
             <div class="pub-links">
               <a href="https://arxiv.org/abs/2402.05027" target="_blank" rel="noopener">arXiv</a>
               <a href="https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p1919.pdf" target="_blank" rel="noopener">PDF</a>
@@ -656,11 +695,23 @@
       <div class="news">
         <div class="news-item">
           <span class="news-date">2026.03</span>
-          <span><em>IndexRAG</em> preprint released on <a href="https://arxiv.org/abs/2603.16415" target="_blank" rel="noopener">arXiv</a> and submitted to EMNLP 2026.</span>
+          <span><em>IndexRAG</em> preprint released on <a href="https://arxiv.org/abs/2603.16415" target="_blank" rel="noopener">arXiv</a>.</span>
         </div>
         <div class="news-item">
-          <span class="news-date">2026.01</span>
-          <span>Released <em>Chroma 1.0</em>, our end-to-end voice cloning model — now at 540+ GitHub stars and 15k+ HuggingFace downloads. Submitted to InterSpeech 2026.</span>
+          <span class="news-date">2026</span>
+          <div>
+            <div class="news-paper-title">FlashLabs Chroma 1.0: A Real-Time End-to-End Spoken Dialogue Model with Personalized Voice Cloning</div>
+            <div class="news-timeline">
+              <div class="news-sub">
+                <span class="news-sub-date">2026.01</span>
+                <span>Open-sourced and released as a <a href="https://arxiv.org/abs/2601.11141" target="_blank" rel="noopener">preprint</a>.</span>
+              </div>
+              <div class="news-sub">
+                <span class="news-sub-date">2026.03</span>
+                <span>Reached 540+ GitHub stars and 15k+ HuggingFace downloads.</span>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="news-item">
           <span class="news-date">2025.11</span>
@@ -668,11 +719,23 @@
         </div>
         <div class="news-item">
           <span class="news-date">2025.09</span>
-          <span><em>NeuroTTT</em> preprint released on <a href="https://arxiv.org/abs/2509.26301" target="_blank" rel="noopener">arXiv</a> and submitted to NeurIPS 2026.</span>
+          <span><em>NeuroTTT</em> preprint released on <a href="https://arxiv.org/abs/2509.26301" target="_blank" rel="noopener">arXiv</a>.</span>
         </div>
         <div class="news-item">
-          <span class="news-date">2024.05</span>
-          <span>Paper on generalizable multi-agent RL accepted to <em>AAMAS 2024</em>.</span>
+          <span class="news-date">2024</span>
+          <div>
+            <div class="news-paper-title">Towards Generalizability of Multi-Agent Reinforcement Learning in Graphs with Recurrent Message Passing</div>
+            <div class="news-timeline">
+              <div class="news-sub">
+                <span class="news-sub-date">2024.02</span>
+                <span>Preprint released on <a href="https://arxiv.org/abs/2402.05027" target="_blank" rel="noopener">arXiv</a>.</span>
+              </div>
+              <div class="news-sub">
+                <span class="news-sub-date">2024.05</span>
+                <span>Accepted to AAMAS 2024.</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
