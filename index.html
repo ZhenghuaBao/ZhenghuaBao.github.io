@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zhenghua Bao — Multimodal AI Engineer</title>
-  <meta name="description" content="Multimodal AI engineer at FlashLabs, working on end-to-end speech generation, voice cloning, and LLM reasoning.">
+  <title>Zhenghua Bao — AI Research Engineer</title>
+  <meta name="description" content="AI research engineer at FlashLabs, working on end-to-end speech generation, voice cloning, and retrieval-augmented reasoning.">
 
   <meta property="og:title" content="Zhenghua Bao">
-  <meta property="og:description" content="Multimodal AI engineer at FlashLabs — end-to-end speech, voice cloning, LLM reasoning.">
+  <meta property="og:description" content="AI research engineer at FlashLabs — end-to-end speech, voice cloning, retrieval-augmented reasoning.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://zhenghuabao.github.io">
   <meta property="og:image" content="https://zhenghuabao.github.io/og-image.png">
@@ -15,7 +15,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Zhenghua Bao">
-  <meta name="twitter:description" content="Multimodal AI engineer at FlashLabs — end-to-end speech, voice cloning, LLM reasoning.">
+  <meta name="twitter:description" content="AI research engineer at FlashLabs — end-to-end speech, voice cloning, retrieval-augmented reasoning.">
   <meta name="twitter:image" content="https://zhenghuabao.github.io/og-image.png">
 
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
@@ -26,7 +26,7 @@
     "@type": "Person",
     "name": "Zhenghua Bao",
     "alternateName": "包正华",
-    "jobTitle": "Multimodal AI Engineer",
+    "jobTitle": "AI Research Engineer",
     "worksFor": {
       "@type": "Organization",
       "name": "FlashLabs",
@@ -406,6 +406,15 @@
       overflow: hidden;
     }
 
+    /* Accepted is a RESULT, not a pending state — it must not share the
+       shimmering treatment that marks "Under Review" two entries below it. */
+    .badge--won {
+      background: rgba(94, 255, 205, 0.12);
+      color: var(--live);
+      border-color: rgba(94, 255, 205, 0.45);
+      box-shadow: 0 0 14px -4px rgba(94, 255, 205, 0.5);
+    }
+
     .badge--scan::after {
       content: '';
       position: absolute;
@@ -635,17 +644,17 @@
     <header class="header">
       <div class="now-line">
         <span class="now-dot" aria-hidden="true"></span>
-        <span>FlashLabs · Shanghai</span>
+        <span>FlashLabs</span>
       </div>
       <h1 class="name">Zhenghua <span class="italic">Bao</span><span class="cursor" aria-hidden="true"></span></h1>
       <div class="name-cn">包正华</div>
       <p class="role">
-        Multimodal AI Engineer
+        AI Research Engineer
         <span class="sep">·</span>
         FlashLabs
       </p>
       <p class="bio">
-        I work in the research department at FlashLabs in Shanghai, where I co-lead Chroma — a real-time end-to-end speech model with personalized voice cloning. My interests sit at the intersection of <em>speech, language, and reasoning</em>, with ongoing work on retrieval-augmented LLMs (IndexRAG). I completed MSc degrees in CS (AI) and Internet &amp; Web-based Systems at TU Darmstadt.
+        I work in the research department at FlashLabs, where I co-lead Chroma — a real-time end-to-end speech model with personalized voice cloning. My interests sit at the intersection of <em>speech, language, and reasoning</em>, with ongoing work on retrieval-augmented LLMs (IndexRAG) and on how upstream speech-recognition errors propagate through multi-hop retrieval. I completed MSc degrees in CS (AI) and Internet &amp; Web-based Systems at TU Darmstadt.
       </p>
     </header>
 
@@ -654,12 +663,13 @@
         <span class="section-num">§ 01 / RESEARCH</span>
       </div>
       <p class="section-intro">
-        I build systems that reason and speak. My current work centers on two threads: end-to-end speech models that can clone a speaker from seconds of audio (Chroma), and retrieval architectures that pre-compute cross-document inference at index time (IndexRAG). Earlier work explored multi-agent reinforcement learning with graph neural networks — specifically, generalization across unseen network topologies — and test-time adaptation for EEG foundation models.
+        I build systems that reason and speak. My current work centers on three threads: end-to-end speech models that can clone a speaker from seconds of audio (Chroma), retrieval architectures that pre-compute cross-document inference at index time (IndexRAG), and how errors introduced upstream — by speech recognition — are amplified rather than absorbed as a question travels through multi-hop retrieval (EMNLP 2026 Main). Earlier work explored multi-agent reinforcement learning with graph neural networks — specifically, generalization across unseen network topologies — and test-time adaptation for EEG foundation models.
       </p>
       <div class="keywords">
         <span class="keyword">speech generation</span>
         <span class="keyword">voice cloning</span>
         <span class="keyword">RAG</span>
+        <span class="keyword">ASR robustness</span>
         <span class="keyword">multimodal AI</span>
         <span class="keyword">multi-agent RL</span>
       </div>
@@ -670,6 +680,24 @@
         <span class="section-num">§ 02 / PUBLICATIONS</span>
       </div>
       <div class="pubs">
+
+        <article class="pub">
+          <div class="pub-year">2026</div>
+          <div class="pub-body">
+            <h3 class="pub-title">Better Retrieval, Worse Robustness: How Multi-hop RAG Amplifies Upstream ASR Errors</h3>
+            <p class="pub-authors"><strong>Zhenghua Bao</strong></p>
+            <p class="pub-venue">
+              <span class="venue-name">EMNLP 2026 Main</span>
+              <span class="badge badge--won">Accepted</span>
+              <span class="badge">Sole Author</span>
+            </p>
+            <div class="pub-links">
+              <a href="https://arxiv.org/abs/2608.22872" target="_blank" rel="noopener">arXiv</a>
+              <a href="https://github.com/Continuum-AI-Corp/spoken-multihop-rag" target="_blank" rel="noopener">Code</a>
+              <a href="https://huggingface.co/datasets/orcarouter/spoken-multihop-rag" target="_blank" rel="noopener">Dataset</a>
+            </div>
+          </div>
+        </article>
 
         <article class="pub">
           <div class="pub-year">2026</div>
@@ -765,6 +793,22 @@
         <div class="news-item">
           <span class="news-date">2026</span>
           <div>
+            <div class="news-paper-title">Better Retrieval, Worse Robustness: How Multi-hop RAG Amplifies Upstream ASR Errors</div>
+            <div class="news-timeline">
+              <div class="news-sub">
+                <span class="news-sub-date">2026.08</span>
+                <span>Sole-authored preprint released on <a href="https://arxiv.org/abs/2608.22872" target="_blank" rel="noopener">arXiv</a>, with <a href="https://github.com/Continuum-AI-Corp/spoken-multihop-rag" target="_blank" rel="noopener">code</a> and <a href="https://huggingface.co/datasets/orcarouter/spoken-multihop-rag" target="_blank" rel="noopener">dataset</a>.</span>
+              </div>
+              <div class="news-sub">
+                <span class="news-sub-date">2026.08</span>
+                <span>Accepted to <strong>EMNLP 2026 Main</strong> as sole author.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="news-item">
+          <span class="news-date">2026</span>
+          <div>
             <div class="news-paper-title">OrcaRouter: A Production-Oriented LLM Router with Hybrid Offline-Online Learning</div>
             <div class="news-timeline">
               <div class="news-sub">
@@ -800,7 +844,7 @@
         </div>
         <div class="news-item">
           <span class="news-date">2025.11</span>
-          <span>Joined <a href="https://www.flashlabs.ai/" target="_blank" rel="noopener">FlashLabs</a> in Shanghai as a Multimodal AI Engineer.</span>
+          <span>Joined <a href="https://www.flashlabs.ai/" target="_blank" rel="noopener">FlashLabs</a> as an AI Research Engineer.</span>
         </div>
         <div class="news-item">
           <span class="news-date">2025.11</span>
