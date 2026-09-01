@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #05080F;
+    font-family: 'Geist', -apple-system, system-ui, sans-serif;
+    position: relative;
+  }
+  /* Same mesh + grid the page uses, so the card and the site look like one thing. */
+  /* A 630px card is a fifth the height of the page, so the page's own mesh
+     values land almost invisible here — the blur eats them before they read.
+     Stronger stops and a smaller blur reproduce what the site looks like
+     rather than what its CSS says. */
+  .mesh {
+    position: absolute; inset: -20% -10% -10% -10%;
+    background:
+      radial-gradient(ellipse 55% 70% at 18% 22%, rgba(78,140,255,0.42), transparent 62%),
+      radial-gradient(ellipse 50% 60% at 78% 6%,  rgba(120,200,255,0.26), transparent 68%),
+      radial-gradient(ellipse 80% 85% at 45% -5%, rgba(42,86,205,0.40),  transparent 68%);
+    filter: blur(26px);
+  }
+  .grid {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(150,180,220,0.030) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(150,180,220,0.030) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 70% 90% at 35% 25%, #000 25%, transparent 85%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 90% at 35% 25%, #000 25%, transparent 85%);
+  }
+  .inner { position: relative; padding: 78px 84px; height: 100%; display: flex; flex-direction: column; }
+  .logo { width: 136px; height: 136px; }
+  .spacer { flex: 1; }
+  h1 {
+    font-family: 'Instrument Serif', serif;
+    font-weight: 400; font-size: 108px; line-height: 1;
+    letter-spacing: -0.02em; color: #E6ECF5;
+  }
+  h1 .it {
+    font-style: italic;
+    background: linear-gradient(135deg, #5EC8FF 20%, #C8A7FF 90%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .cn {
+    font-family: 'Noto Serif SC', serif; font-weight: 300;
+    font-size: 30px; letter-spacing: 0.18em; color: #6B7690;
+    margin-top: 14px;
+  }
+  .role {
+    font-size: 30px; color: #B0BACB; margin-top: 20px; font-weight: 400;
+  }
+  .role .sep { color: #6B7690; margin: 0 14px; }
+  .url {
+    position: absolute; right: 84px; bottom: 70px;
+    font-family: 'JetBrains Mono', monospace; font-size: 22px;
+    color: #5EC8FF; letter-spacing: 0.02em;
+  }
+</style>
+</head>
+<body>
+  <div class="mesh"></div>
+  <div class="grid"></div>
+  <div class="inner">
+    <svg class="logo" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+          <stop offset="0%" stop-color="#0A1228"/>
+          <stop offset="100%" stop-color="#05080F"/>
+        </linearGradient>
+        <linearGradient id="zg" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#7DD8FF"/>
+          <stop offset="55%" stop-color="#5EC8FF"/>
+          <stop offset="100%" stop-color="#C8A7FF"/>
+        </linearGradient>
+      </defs>
+      <rect width="32" height="32" rx="7" fill="url(#bg)"/>
+      <path d="M 6 6 L 26 6 L 26 11 L 13 21 L 26 21 L 26 26 L 6 26 L 6 21 L 19 11 L 6 11 Z" fill="url(#zg)"/>
+    </svg>
+    <div class="spacer"></div>
+    <h1>Zhenghua <span class="it">Bao</span></h1>
+    <div class="cn">包正华</div>
+    <div class="role">AI Research Engineer<span class="sep">·</span>FlashLabs Research</div>
+  </div>
+  <div class="url">zhenghuabao.github.io</div>
+</body>
+</html>

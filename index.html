@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zhenghua Bao — AI Research Engineer</title>
-  <meta name="description" content="AI research engineer at FlashLabs, working on end-to-end speech generation, voice cloning, and retrieval-augmented reasoning.">
+  <meta name="description" content="AI research engineer at FlashLabs — end-to-end speech, retrieval-augmented reasoning, and how ASR errors propagate through multi-hop RAG.">
 
   <meta property="og:title" content="Zhenghua Bao">
-  <meta property="og:description" content="AI research engineer at FlashLabs — end-to-end speech, voice cloning, retrieval-augmented reasoning.">
+  <meta property="og:description" content="AI research engineer at FlashLabs — end-to-end speech, retrieval-augmented reasoning, and ASR robustness in multi-hop RAG.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://zhenghuabao.github.io">
   <meta property="og:image" content="https://zhenghuabao.github.io/og-image.png">
@@ -15,7 +15,7 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Zhenghua Bao">
-  <meta name="twitter:description" content="AI research engineer at FlashLabs — end-to-end speech, voice cloning, retrieval-augmented reasoning.">
+  <meta name="twitter:description" content="AI research engineer at FlashLabs — end-to-end speech, retrieval-augmented reasoning, and ASR robustness in multi-hop RAG.">
   <meta name="twitter:image" content="https://zhenghuabao.github.io/og-image.png">
 
   <link rel="icon" type="image/svg+xml" href="./favicon.svg">
@@ -46,6 +46,7 @@
       "End-to-end Speech Models",
       "Voice Cloning",
       "Retrieval-Augmented Generation",
+      "ASR Robustness",
       "Multimodal AI",
       "Multi-Agent Reinforcement Learning"
     ]
@@ -406,8 +407,10 @@
       overflow: hidden;
     }
 
-    /* Accepted is a RESULT, not a pending state — it must not share the
-       shimmering treatment that marks "Under Review" two entries below it. */
+    /* The shimmer goes on what was WON. It is the most eye-catching thing on
+       the page, and it used to sit on "Under Review" — so the least certain
+       item pulled the most attention while an accepted main-conference paper
+       sat still. Weight follows substance now. */
     .badge--won {
       background: rgba(94, 255, 205, 0.12);
       color: var(--live);
@@ -421,7 +424,7 @@
       inset: 0;
       background: linear-gradient(90deg,
         transparent 0%,
-        rgba(94, 200, 255, 0.4) 50%,
+        rgba(94, 255, 205, 0.45) 50%,
         transparent 100%);
       animation: scan 2.8s linear infinite;
     }
@@ -688,7 +691,7 @@
             <p class="pub-authors"><strong>Zhenghua Bao</strong></p>
             <p class="pub-venue">
               <span class="venue-name">EMNLP 2026 Main</span>
-              <span class="badge badge--won">Accepted</span>
+              <span class="badge badge--won badge--scan">Accepted</span>
               <span class="badge">Sole Author</span>
             </p>
             <div class="pub-links">
@@ -724,7 +727,7 @@
             <p class="pub-authors"><strong>Zhenghua Bao</strong>, Yi Shi</p>
             <p class="pub-venue">
               AACL-IJCNLP 2026
-              <span class="badge badge--scan">Under Review</span>
+              <span class="badge">Under Review</span>
               <span class="badge">First Author</span>
             </p>
             <div class="pub-links">
@@ -772,7 +775,7 @@
           <div class="pub-body">
             <h3 class="pub-title">Towards Generalizability of Multi-Agent Reinforcement Learning in Graphs with Recurrent Message Passing</h3>
             <p class="pub-authors">Jannis Weil, <strong>Zhenghua Bao</strong>, Osama Abboud, Tobias Meuser</p>
-            <p class="pub-venue"><span class="venue-name">AAMAS 2024</span><span class="badge badge--won">Accepted</span><span class="badge badge--won">Oral</span></p>
+            <p class="pub-venue"><span class="venue-name">AAMAS 2024</span><span class="badge badge--won badge--scan">Accepted</span><span class="badge badge--won badge--scan">Oral</span></p>
             <div class="pub-links">
               <a href="https://arxiv.org/abs/2402.05027" target="_blank" rel="noopener">arXiv</a>
               <a href="https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p1919.pdf" target="_blank" rel="noopener">PDF</a>
@@ -891,21 +894,15 @@
     </section>
 
     <footer class="footer">
-      <span id="last-updated">Last updated · May 2026</span>
+      <!-- A REAL DATE. This used to be written by the script at the bottom from
+           the VISITOR'S clock, so it always read "this month" no matter how long
+           the page had sat untouched — a freshness signal that could never be
+           anything but fresh. Update it by hand when the page changes. -->
+      <span id="last-updated">Last updated · September 2026</span>
       <span><span class="signal">●</span> Online</span>
     </footer>
 
   </main>
 
-  <script>
-    (function () {
-      var el = document.getElementById('last-updated');
-      if (!el) return;
-      var d = new Date();
-      var months = ['January','February','March','April','May','June',
-                    'July','August','September','October','November','December'];
-      el.textContent = 'Last updated · ' + months[d.getMonth()] + ' ' + d.getFullYear();
-    })();
-  </script>
 </body>
 </html>
