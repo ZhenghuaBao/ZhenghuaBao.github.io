@@ -87,8 +87,7 @@
               "Helvetica Neue", Arial, "Noto Sans", sans-serif;
       --display: 'Instrument Serif', Georgia, "Times New Roman", serif;
 
-      --frame: 60rem;
-      --prose: 45rem;
+      --frame: 76rem;
       --radius: 8px;
     }
 
@@ -140,7 +139,7 @@
       padding: 1.25rem clamp(1.25rem, 4vw, 2.5rem) 4rem;
     }
 
-    .prose { max-width: var(--prose); }
+    .identity { min-width: 0; }
 
     a { color: var(--accent); text-decoration: none; }
 
@@ -186,11 +185,23 @@
 
     /* ---------- Masthead ---------- */
 
-    .masthead { padding-bottom: 2.25rem; }
+    /* Name on the left, contacts pinned bottom-right, so the header occupies
+       the full frame instead of trailing off into blank space. */
+    .masthead {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 2rem;
+      padding-bottom: 2.25rem;
+    }
+
+    @media (max-width: 62rem) {
+      .masthead { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+    }
 
     h1 {
       font-family: var(--display);
-      font-size: clamp(3rem, 8.5vw, 5.25rem);
+      font-size: clamp(3rem, 9vw, 6rem);
       font-weight: 400;
       line-height: 1.02;
       letter-spacing: -0.02em;
@@ -214,7 +225,17 @@
     .affil a { border-bottom: 1px solid var(--rule-hi); }
     .affil a:hover { border-color: var(--accent); text-shadow: var(--glow); }
 
-    .contacts { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+    .contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 0.5rem;
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 62rem) {
+      .contacts { flex-direction: row; flex-wrap: wrap; }
+    }
 
     /* ---------- Nav ---------- */
 
@@ -254,10 +275,23 @@
 
     section > p { color: var(--ink-soft); }
 
+    /* Bio on the left, interests on the right. One column of running prose
+       under a 76rem heading rule would leave half the row blank. */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    @media (max-width: 62rem) {
+      .about-grid { grid-template-columns: 1fr; gap: 1.75rem; }
+    }
+
+    .about-grid > div > p { color: var(--ink-soft); }
+
     .interests {
       list-style: none;
-      max-width: var(--prose);
-      margin-top: 1.15rem;
       display: flex;
       flex-direction: column;
       gap: 0.65rem;
@@ -277,11 +311,16 @@
 
     .interests strong { color: var(--ink); font-weight: 600; }
 
-    .aside { margin-top: 1.15rem; font-size: 0.95rem; color: var(--muted); max-width: var(--prose); }
+    .aside { margin-top: 1.5rem; font-size: 0.95rem; color: var(--muted); }
 
     /* ---------- News ---------- */
 
-    .news { display: flex; flex-direction: column; gap: 0.7rem; }
+    /* Multicol rather than a grid, because multicol fills column one before
+       column two. A grid would lay the items out across each row, which
+       scrambles a reverse-chronological list. */
+    .news { column-count: 2; column-gap: 3.5rem; }
+
+    @media (max-width: 62rem) { .news { column-count: 1; } }
 
     .news-item {
       display: grid;
@@ -289,6 +328,9 @@
       gap: 1.25rem;
       color: var(--ink-soft);
       line-height: 1.6;
+      margin-bottom: 0.8rem;
+      break-inside: avoid;
+      -webkit-column-break-inside: avoid;
     }
 
     @media (max-width: 36rem) {
@@ -333,9 +375,17 @@
 
     /* ---------- Publications ---------- */
 
-    .pubs { display: flex; flex-direction: column; gap: 1rem; }
+    .pubs {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    @media (max-width: 62rem) { .pubs { grid-template-columns: 1fr; } }
 
     .pub {
+      display: flex;
+      flex-direction: column;
       padding: 1.25rem 1.4rem;
       border: 1px solid var(--rule);
       border-left: 3px solid var(--rule-hi);
@@ -362,7 +412,10 @@
     .pub-authors { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.5; }
     .pub-authors strong { font-weight: 600; color: var(--ink); }
 
-    .pub-meta { margin-top: 0.55rem; font-size: 0.9rem; color: var(--muted); }
+    /* auto pushes the venue and link row to the card floor, so the two cards
+       in a row line up along the bottom even when their titles wrap to
+       different heights. */
+    .pub-meta { margin-top: auto; padding-top: 0.7rem; font-size: 0.9rem; color: var(--muted); }
 
     .venue { color: var(--ink); font-weight: 600; }
 
@@ -425,9 +478,11 @@
     </div>
 
     <header class="masthead">
-      <h1>Zhenghua <span class="last">Bao</span></h1>
-      <p class="name-cn">包正华</p>
-      <p class="affil">AI Research Engineer at <a href="https://www.flashlabs.ai/" target="_blank" rel="noopener">FlashLabs</a></p>
+      <div class="identity">
+        <h1>Zhenghua <span class="last">Bao</span></h1>
+        <p class="name-cn">包正华</p>
+        <p class="affil">AI Research Engineer at <a href="https://www.flashlabs.ai/" target="_blank" rel="noopener">FlashLabs</a></p>
+      </div>
       <div class="contacts">
         <a class="box" href="mailto:zheng.hua.b@gmail.com">
           <svg viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -460,17 +515,21 @@
 
     <section id="about">
       <h2>About</h2>
-      <p class="prose">
-        I work in the research department at FlashLabs, where I co-lead Chroma, a real-time end-to-end spoken dialogue model that reasons over what it hears. My interests sit at the intersection of speech, language, and reasoning, with ongoing work on retrieval-augmented LLMs (IndexRAG) and on how upstream speech-recognition errors propagate through multi-hop retrieval. I completed MSc degrees in CS (AI) and Internet &amp; Web-based Systems at TU Darmstadt.
-      </p>
-      <ul class="interests">
-        <li><strong>Spoken dialogue.</strong> End-to-end models that hold a real-time conversation and reason over speech.</li>
-        <li><strong>Retrieval-augmented generation.</strong> Architectures that pre-compute cross-document inference at index time.</li>
-        <li><strong>Robustness.</strong> How errors introduced upstream by speech recognition are amplified rather than absorbed as a question travels through multi-hop retrieval.</li>
-      </ul>
-      <p class="aside">
-        Earlier work explored multi-agent reinforcement learning with graph neural networks, specifically generalization across unseen network topologies, and test-time adaptation for EEG foundation models.
-      </p>
+      <div class="about-grid">
+        <div>
+          <p>
+            I work in the research department at FlashLabs, where I co-lead Chroma, a real-time end-to-end spoken dialogue model that reasons over what it hears. My interests sit at the intersection of speech, language, and reasoning, with ongoing work on retrieval-augmented LLMs (IndexRAG) and on how upstream speech-recognition errors propagate through multi-hop retrieval. I completed MSc degrees in CS (AI) and Internet &amp; Web-based Systems at TU Darmstadt.
+          </p>
+          <p class="aside">
+            Earlier work explored multi-agent reinforcement learning with graph neural networks, specifically generalization across unseen network topologies, and test-time adaptation for EEG foundation models.
+          </p>
+        </div>
+        <ul class="interests">
+          <li><strong>Spoken dialogue.</strong> End-to-end models that hold a real-time conversation and reason over speech.</li>
+          <li><strong>Retrieval-augmented generation.</strong> Architectures that pre-compute cross-document inference at index time.</li>
+          <li><strong>Robustness.</strong> How errors introduced upstream by speech recognition are amplified rather than absorbed as a question travels through multi-hop retrieval.</li>
+        </ul>
+      </div>
     </section>
 
     <section id="news">
