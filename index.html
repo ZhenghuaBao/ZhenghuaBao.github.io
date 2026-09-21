@@ -95,6 +95,8 @@
       --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
               "Helvetica Neue", Arial, "Noto Sans", sans-serif;
       --display: 'Instrument Serif', Georgia, "Times New Roman", serif;
+      --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+              "Liberation Mono", monospace;
 
       --frame: 76rem;
       --radius: 8px;
@@ -447,6 +449,61 @@
     .pub-meta a { color: var(--ink-soft); border-bottom: 1px solid var(--rule-hi); }
     .pub-meta a:hover { color: var(--accent); border-color: var(--accent); text-shadow: var(--glow); }
 
+    /* ---------- BibTeX ---------- */
+
+    details.bib { margin-top: 0.7rem; }
+
+    details.bib > summary {
+      list-style: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    details.bib > summary::-webkit-details-marker { display: none; }
+    details.bib > summary::before { content: '▸'; font-size: 0.75em; }
+    details.bib[open] > summary::before { content: '▾'; }
+    details.bib > summary:hover { color: var(--accent); }
+
+    .bib-box { position: relative; margin-top: 0.55rem; }
+
+    .bib-box pre {
+      font-family: var(--mono);
+      font-size: 0.73rem;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      padding: 0.85rem 0.9rem;
+      padding-right: 5rem;
+      overflow-x: auto;
+    }
+
+    .bib-copy {
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      font-family: var(--sans);
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.26rem 0.55rem;
+      border: 1px solid var(--rule);
+      border-radius: 4px;
+      background: var(--surface);
+      color: var(--muted);
+      cursor: pointer;
+      transition: border-color 0.18s ease, color 0.18s ease;
+    }
+
+    .bib-copy:hover,
+    .bib-copy[data-done] { border-color: var(--accent); color: var(--accent); }
+
     .footnote { margin-top: 1.1rem; font-size: 0.88rem; color: var(--muted); }
 
     /* ---------- Footer ---------- */
@@ -637,6 +694,21 @@
             <span class="sep">·</span>
             <a href="https://huggingface.co/datasets/orcarouter/spoken-multihop-rag" target="_blank" rel="noopener">dataset</a>
           </p>
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <div class="bib-box">
+              <button class="bib-copy" type="button">Copy</button>
+<pre>@misc{bao2026better,
+      title={Better Retrieval, Worse Robustness: How Multi-hop RAG Amplifies Upstream ASR Errors},
+      author={Zhenghua Bao},
+      year={2026},
+      eprint={2608.22872},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2608.22872},
+}</pre>
+            </div>
+          </details>
         </article>
 
         <article class="pub">
@@ -649,6 +721,20 @@
             <span class="sep">·</span>
             <a href="https://github.com/Continuum-AI-Corp/IndexRAG" target="_blank" rel="noopener">code</a>
           </p>
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <div class="bib-box">
+              <button class="bib-copy" type="button">Copy</button>
+<pre>@misc{bao2026indexrag,
+      title={IndexRAG: Bridging Facts for Cross-Document Reasoning at Index Time},
+      author={Zhenghua Bao and Yi Shi},
+      year={2026},
+      eprint={2603.16415},
+      archivePrefix={arXiv},
+      url={https://arxiv.org/abs/2603.16415},
+}</pre>
+            </div>
+          </details>
         </article>
 
         <article class="pub">
@@ -663,6 +749,20 @@
             <span class="sep">·</span>
             650+ stars
           </p>
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <div class="bib-box">
+              <button class="bib-copy" type="button">Copy</button>
+<pre>@misc{bao2026orcarouter,
+      title={OrcaRouter: A Production-Oriented LLM Router with Hybrid Offline-Online Learning},
+      author={Zhenghua Bao and Fengya Tian and Chris Zhang and Zhenjun Chen and Xile Ma and Yi Shi},
+      year={2026},
+      eprint={2605.30736},
+      archivePrefix={arXiv},
+      url={https://arxiv.org/abs/2605.30736},
+}</pre>
+            </div>
+          </details>
         </article>
 
         <article class="pub">
@@ -679,6 +779,18 @@
             <span class="sep">·</span>
             540+ stars, 15k+ downloads
           </p>
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <div class="bib-box">
+              <button class="bib-copy" type="button">Copy</button>
+<pre>@article{chen2026chroma,
+  title={FlashLabs Chroma 1.0: A Real-Time End-to-End Spoken Dialogue Model with Personalized Voice Cloning},
+  author={Chen, Tanyu and Chen, Tairan and Shen, Kai and Bao, Zhenghua and Zhang, Zhihui and Yuan, Man and Shi, Yi},
+  journal={arXiv preprint arXiv:2601.11141},
+  year={2026}
+}</pre>
+            </div>
+          </details>
         </article>
 
         <article class="pub">
@@ -691,6 +803,20 @@
             <span class="sep">·</span>
             <a href="https://github.com/wsl2000/NeuroTTT" target="_blank" rel="noopener">code</a>
           </p>
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <div class="bib-box">
+              <button class="bib-copy" type="button">Copy</button>
+<pre>@misc{wang2025neurottt,
+      title={NeuroTTT: Bridging Pretrain--Downstream Task Misalignment in EEG Foundation Models via Test-Time Training},
+      author={Suli Wang and Yangshen Deng and Zhenghua Bao and Xinyu Zhan and Yiqun Duan},
+      year={2025},
+      eprint={2509.26301},
+      archivePrefix={arXiv},
+      url={https://arxiv.org/abs/2509.26301},
+}</pre>
+            </div>
+          </details>
         </article>
 
         <article class="pub">
@@ -705,6 +831,21 @@
             <span class="sep">·</span>
             <a href="https://github.com/jw3il/graph-marl" target="_blank" rel="noopener">code</a>
           </p>
+          <details class="bib">
+            <summary>BibTeX</summary>
+            <div class="bib-box">
+              <button class="bib-copy" type="button">Copy</button>
+<pre>@inproceedings{weil2024towards,
+  title={Towards Generalizability of Multi-Agent Reinforcement Learning in Graphs with Recurrent Message Passing},
+  author={Weil, Jannis and Bao, Zhenghua and Abboud, Osama and Meuser, Tobias},
+  booktitle={Proceedings of the 23rd International Conference on Autonomous Agents and Multiagent Systems (AAMAS 2024)},
+  pages={1919--1927},
+  year={2024},
+  publisher={IFAAMAS},
+  url={https://www.ifaamas.org/Proceedings/aamas2024/pdfs/p1919.pdf}
+}</pre>
+            </div>
+          </details>
         </article>
 
       </div>
@@ -726,6 +867,25 @@
       var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
       window.__applyTheme(next);
       try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+
+    // The clipboard API needs a secure context. GitHub Pages is HTTPS, but a
+    // file:// preview is not, so the button reports failure rather than
+    // silently doing nothing and leaving you to wonder if it copied.
+    Array.prototype.forEach.call(document.querySelectorAll('.bib-copy'), function (btn) {
+      btn.addEventListener('click', function () {
+        var pre = btn.parentNode.querySelector('pre');
+        var flash = function (label) {
+          btn.textContent = label;
+          btn.setAttribute('data-done', '');
+          setTimeout(function () { btn.textContent = 'Copy'; btn.removeAttribute('data-done'); }, 1600);
+        };
+        if (!navigator.clipboard) { flash('Select it'); return; }
+        navigator.clipboard.writeText(pre.textContent.trim()).then(
+          function () { flash('Copied'); },
+          function () { flash('Select it'); }
+        );
+      });
     });
   </script>
 
