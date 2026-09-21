@@ -386,10 +386,17 @@
 
     /* ---------- Publications ---------- */
 
+    /* align-items: start, not the grid default of stretch. Under stretch both
+       cards in a row take the height of the taller one, so opening a BibTeX
+       disclosure on the left grew the card on the right and pushed its venue
+       row down with it. Expanding one card must not move another. The cost is
+       that two cards in a row no longer end at the same y, which is a fair
+       trade for content that stays put. */
     .pubs {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
+      align-items: start;
     }
 
     @media (max-width: 62rem) { .pubs { grid-template-columns: 1fr; } }
@@ -423,10 +430,7 @@
     .pub-authors { font-size: 0.95rem; color: var(--ink-soft); line-height: 1.5; }
     .pub-authors strong { font-weight: 600; color: var(--ink); }
 
-    /* auto pushes the venue and link row to the card floor, so the two cards
-       in a row line up along the bottom even when their titles wrap to
-       different heights. */
-    .pub-meta { margin-top: auto; padding-top: 0.7rem; font-size: 0.9rem; color: var(--muted); }
+    .pub-meta { padding-top: 0.7rem; font-size: 0.9rem; color: var(--muted); }
 
     .venue { color: var(--ink); font-weight: 600; }
 
@@ -731,6 +735,7 @@
       year={2026},
       eprint={2603.16415},
       archivePrefix={arXiv},
+      primaryClass={cs.CL},
       url={https://arxiv.org/abs/2603.16415},
 }</pre>
             </div>
@@ -759,6 +764,7 @@
       year={2026},
       eprint={2605.30736},
       archivePrefix={arXiv},
+      primaryClass={cs.LG},
       url={https://arxiv.org/abs/2605.30736},
 }</pre>
             </div>
@@ -783,18 +789,21 @@
             <summary>BibTeX</summary>
             <div class="bib-box">
               <button class="bib-copy" type="button">Copy</button>
-<pre>@article{chen2026chroma,
-  title={FlashLabs Chroma 1.0: A Real-Time End-to-End Spoken Dialogue Model with Personalized Voice Cloning},
-  author={Chen, Tanyu and Chen, Tairan and Shen, Kai and Bao, Zhenghua and Zhang, Zhihui and Yuan, Man and Shi, Yi},
-  journal={arXiv preprint arXiv:2601.11141},
-  year={2026}
+<pre>@misc{chen2026chroma,
+      title={FlashLabs Chroma 1.0: A Real-Time End-to-End Spoken Dialogue Model with Personalized Voice Cloning},
+      author={Tanyu Chen and Tairan Chen and Kai Shen and Zhenghua Bao and Zhihui Zhang and Man Yuan and Yi Shi},
+      year={2026},
+      eprint={2601.11141},
+      archivePrefix={arXiv},
+      primaryClass={cs.SD},
+      url={https://arxiv.org/abs/2601.11141},
 }</pre>
             </div>
           </details>
         </article>
 
         <article class="pub">
-          <h3 class="pub-title">NeuroTTT: Bridging Pretrain–Downstream Task Misalignment in EEG Foundation Models via Test-Time Training</h3>
+          <h3 class="pub-title">NeuroTTT: Bridging Pretraining-Downstream Task Misalignment in EEG Foundation Models via Test-Time Training</h3>
           <p class="pub-authors">Suli Wang, Yangshen Deng, <strong>Zhenghua Bao</strong>, Xinyu Zhan, Yiqun Duan</p>
           <p class="pub-meta">
             <span class="venue">Preprint, 2025</span>
@@ -808,11 +817,12 @@
             <div class="bib-box">
               <button class="bib-copy" type="button">Copy</button>
 <pre>@misc{wang2025neurottt,
-      title={NeuroTTT: Bridging Pretrain--Downstream Task Misalignment in EEG Foundation Models via Test-Time Training},
+      title={NeuroTTT: Bridging Pretraining-Downstream Task Misalignment in EEG Foundation Models via Test-Time Training},
       author={Suli Wang and Yangshen Deng and Zhenghua Bao and Xinyu Zhan and Yiqun Duan},
       year={2025},
       eprint={2509.26301},
       archivePrefix={arXiv},
+      primaryClass={cs.LG},
       url={https://arxiv.org/abs/2509.26301},
 }</pre>
             </div>
