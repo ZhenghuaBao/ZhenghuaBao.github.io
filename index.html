@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zhenghua Bao</title>
+  <title>Zhenghua Bao — AI Research Engineer</title>
   <meta name="description" content="AI research engineer at FlashLabs — end-to-end speech, retrieval-augmented reasoning, and how ASR errors propagate through multi-hop RAG.">
+
+  <!-- Kept in sync with the theme toggle below, not with the system setting,
+       so the mobile address bar matches whichever theme the visitor chose. -->
+  <meta name="theme-color" content="#ffffff">
 
   <meta property="og:title" content="Zhenghua Bao">
   <meta property="og:description" content="AI research engineer at FlashLabs — end-to-end speech, retrieval-augmented reasoning, and ASR robustness in multi-hop RAG.">
@@ -24,13 +28,18 @@
        deferred script would let the wrong theme render for a frame first, which
        reads as a flash of white on a dark-mode machine. -->
   <script>
+    window.__applyTheme = function (t) {
+      document.documentElement.setAttribute('data-theme', t);
+      var m = document.querySelector('meta[name="theme-color"]');
+      if (m) m.setAttribute('content', t === 'dark' ? '#0b0e14' : '#ffffff');
+    };
     (function () {
       var t;
       try { t = localStorage.getItem('theme'); } catch (e) {}
       if (t !== 'light' && t !== 'dark') {
         t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       }
-      document.documentElement.setAttribute('data-theme', t);
+      window.__applyTheme(t);
     })();
   </script>
 
@@ -452,6 +461,18 @@
 
     ::selection { background: var(--accent); color: var(--bg); }
 
+    /* The browser default focus ring is a thin dark outline, which all but
+       disappears against the dark theme. Keyboard users need to see where
+       they are. focus-visible rather than focus so a mouse click on a box
+       does not leave a ring behind. */
+    a:focus-visible,
+    button:focus-visible,
+    summary:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 3px;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after {
         transition-duration: 0.01ms !important;
@@ -480,7 +501,7 @@
     <header class="masthead">
       <div class="identity">
         <h1>Zhenghua <span class="last">Bao</span></h1>
-        <p class="name-cn">包正华</p>
+        <p class="name-cn" lang="zh-Hans">包正华</p>
         <p class="affil">AI Research Engineer at <a href="https://www.flashlabs.ai/" target="_blank" rel="noopener">FlashLabs</a></p>
       </div>
       <div class="contacts">
@@ -703,7 +724,7 @@
   <script>
     document.getElementById('theme-toggle').addEventListener('click', function () {
       var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
+      window.__applyTheme(next);
       try { localStorage.setItem('theme', next); } catch (e) {}
     });
   </script>
