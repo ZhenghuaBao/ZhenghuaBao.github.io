@@ -220,10 +220,13 @@
 
     h1 .last { color: var(--accent); text-shadow: var(--glow); }
 
+    /* No letter-spacing. Tracking is a Latin device: it opens the gaps inside
+       a word without breaking it, because the reader still sees the letters as
+       one unit. Han characters are already whole words, so the same rule just
+       pushes 包正华 apart into three separate things. */
     .name-cn {
-      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
+      font-size: clamp(1.15rem, 2.5vw, 1.4rem);
       color: var(--muted);
-      letter-spacing: 0.22em;
       margin-top: 0.7rem;
     }
 
