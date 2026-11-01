@@ -473,6 +473,180 @@
 
     .aside { margin-top: 1.5rem; font-size: 0.95rem; color: var(--muted); }
 
+    /* A quiet link under the About mini-carousel out to the full set below. */
+    .more-photos {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      border-bottom: 1px solid var(--rule-hi);
+    }
+    .more-photos:hover { border-color: var(--accent); text-shadow: var(--glow); }
+
+    /* ---------- Photos ---------- */
+
+    /* One album per event. Within an album every photo is normalised to the
+       same height, so a portrait and a landscape sit in the same row without
+       either being cropped — the portrait is simply narrower. The row wraps
+       and the last line is left-aligned, the way a contact sheet reads. */
+    .album { margin-bottom: 2.75rem; }
+    .album:last-child { margin-bottom: 0; }
+
+    /* Event name and its place/date are told apart by weight and size, not by
+       a separator glyph — the name is the title, the rest is a quiet subtitle. */
+    .album-head {
+      font-family: var(--sans);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 0.3rem 0.7rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .album-head .ev {
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    .album-head .meta {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .album-note {
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .album-note em { font-style: italic; color: var(--ink-soft); }
+
+    .album-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    /* Thumbnails are buttons: keyboard-reachable, and they open the lightbox.
+       A fixed height normalises portrait and landscape into one tidy row — the
+       portrait just ends up narrower — and the row is centred rather than
+       left-aligned, so a short row is balanced instead of trailing off right. */
+    .ph {
+      margin: 0; padding: 0; border: 0; background: none;
+      flex: 0 0 auto;
+      height: 22rem;
+      max-width: 100%;
+      cursor: zoom-in;
+      border-radius: var(--radius);
+    }
+
+    .ph img {
+      height: 100%;
+      width: auto;
+      max-width: 100%;
+      display: block;
+      object-fit: cover;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      transition: border-color 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .ph:hover img,
+    .ph:focus-visible img { border-color: var(--accent); box-shadow: var(--glow); }
+
+    .ph:focus-visible { outline: none; }
+
+    @media (max-width: 36rem) {
+      .ph { height: 15rem; }
+    }
+
+    /* ---------- Lightbox ---------- */
+
+    /* A dark overlay regardless of page theme — a photo reads best on near
+       black. Hidden with the [hidden] attribute so no script runs until a
+       thumbnail is clicked. */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: clamp(1rem, 4vw, 3rem);
+      background: rgba(5, 7, 11, 0.9);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+    }
+
+    .lightbox[hidden] { display: none; }
+
+    .lb-stage {
+      margin: 0;
+      max-width: 100%;
+      max-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lb-img {
+      max-width: 100%;
+      max-height: 82vh;
+      width: auto;
+      height: auto;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 44px -10px rgba(0, 0, 0, 0.7);
+    }
+
+    .lb-cap {
+      margin-top: 0.85rem;
+      max-width: 44rem;
+      text-align: center;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: #c7cedb;
+    }
+
+    .lb-cap em { font-style: italic; color: #fff; }
+
+    .lb-btn {
+      position: absolute;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.6rem;
+      height: 2.6rem;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      border-radius: 50%;
+      background: rgba(20, 24, 31, 0.55);
+      color: #fff;
+      cursor: pointer;
+      transition: background-color 0.18s ease, border-color 0.18s ease;
+    }
+
+    .lb-btn:hover { background: rgba(44, 50, 62, 0.9); border-color: rgba(255, 255, 255, 0.55); }
+    .lb-btn svg {
+      width: 20px; height: 20px; fill: none; stroke: currentColor;
+      stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+    }
+
+    .lb-close { top: 1rem; right: 1rem; }
+    .lb-prev { left: 1rem; top: 50%; transform: translateY(-50%); }
+    .lb-next { right: 1rem; top: 50%; transform: translateY(-50%); }
+
+    .lb-nav[hidden] { display: none; }
+
+    @media (max-width: 36rem) {
+      .lb-prev { left: 0.5rem; }
+      .lb-next { right: 0.5rem; }
+    }
+
     /* ---------- News ---------- */
 
     /* Multicol rather than a grid, because multicol fills column one before
@@ -792,6 +966,7 @@
       <a class="box" href="#about">About</a>
       <a class="box" href="#news">News</a>
       <a class="box" href="#publications">Publications</a>
+      <a class="box" href="#photos">Photos</a>
     </nav>
 
     <section id="about">
@@ -846,11 +1021,7 @@
               <img src="graduation.jpg" width="900" height="1200"
                    alt="Zhenghua Bao at his master's graduation at TU Darmstadt, in front of a slide naming his thesis"
                    loading="lazy" decoding="async">
-              <figcaption>Master&rsquo;s graduation at TU Darmstadt, 6 June 2025. The thesis
-                on the slide is <em>Integration of Multi-Agent Reinforcement
-                Learning in Dynamic Networks</em>, supervised by Dr. Jannis Weil
-                at the Multimedia Communications Lab of Prof. Dr.-Ing. Dr. h.c.
-                Ralf Steinmetz.</figcaption>
+              <figcaption>Master&rsquo;s graduation at TU Darmstadt, June 2025.</figcaption>
             </figure>
 
             <figure class="shot">
@@ -870,6 +1041,7 @@
               <svg viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path d="M9.5 5.5L16 12l-6.5 6.5"/></svg>
             </button>
           </div>
+          <a class="more-photos" href="#photos">More photos &rarr;</a>
         </div>
       </div>
     </section>
@@ -1125,15 +1297,81 @@
       <p class="footnote">* denotes equal contribution.</p>
     </section>
 
+    <section id="photos">
+      <h2>Photos</h2>
+
+      <div class="album">
+        <h3 class="album-head"><span class="ev">EMNLP 2026</span><span class="meta">Budapest, November 2026</span></h3>
+        <p class="album-note">Presenting <em>Better Retrieval, Worse Robustness: How Multi-hop
+          RAG Amplifies Upstream ASR Errors</em> at the Main Conference poster session.</p>
+        <div class="album-row">
+          <button class="ph" type="button"
+                  data-full="emnlp-conference-full.jpg"
+                  data-cap="EMNLP 2026, Budapest &mdash; at the conference backdrop.">
+            <img src="emnlp-conference.jpg" width="1400" height="1220"
+                 alt="Zhenghua Bao at the EMNLP 2026 Budapest conference backdrop"
+                 loading="lazy" decoding="async">
+          </button>
+          <button class="ph" type="button"
+                  data-full="emnlp-poster-full.jpg"
+                  data-cap="EMNLP 2026, Budapest &mdash; presenting &lt;em&gt;Better Retrieval, Worse Robustness: How Multi-hop RAG Amplifies Upstream ASR Errors&lt;/em&gt; at board 205.">
+            <img src="emnlp-poster.jpg" width="1050" height="1400"
+                 alt="Zhenghua Bao presenting his Better Retrieval, Worse Robustness poster at board 205, EMNLP 2026"
+                 loading="lazy" decoding="async">
+          </button>
+        </div>
+      </div>
+
+      <div class="album">
+        <h3 class="album-head"><span class="ev">Graduation</span><span class="meta">TU Darmstadt, June 2025</span></h3>
+        <p class="album-note">Master&rsquo;s graduation, 6 June 2025. The thesis on the slide is
+          <em>Integration of Multi-Agent Reinforcement Learning in Dynamic Networks</em>,
+          supervised by Dr. Jannis Weil at the Multimedia Communications Lab of
+          Prof. Dr.-Ing. Dr. h.c. Ralf Steinmetz.</p>
+        <div class="album-row">
+          <button class="ph" type="button"
+                  data-full="graduation.jpg"
+                  data-cap="TU Darmstadt, June 2025 &mdash; at the slide naming the thesis.">
+            <img src="graduation.jpg" width="900" height="1200"
+                 alt="Zhenghua Bao at his master's graduation at TU Darmstadt, in front of a slide naming his thesis"
+                 loading="lazy" decoding="async">
+          </button>
+          <button class="ph" type="button"
+                  data-full="graduation-2.jpg"
+                  data-cap="TU Darmstadt, June 2025 &mdash; at the photo wall in cap and gown.">
+            <img src="graduation-2.jpg" width="900" height="1200"
+                 alt="Zhenghua Bao in cap and gown against a TU Darmstadt backdrop"
+                 loading="lazy" decoding="async">
+          </button>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <!-- A REAL DATE. This used to be written by the script at the bottom from
            the VISITOR'S clock, so it always read "this month" no matter how long
            the page had sat untouched — a freshness signal that could never be
            anything but fresh. Update it by hand when the page changes. -->
-      Last updated October 2026.
+      Last updated November 2026.
     </footer>
 
   </main>
+
+  <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Photo viewer">
+    <button class="lb-btn lb-close" type="button" aria-label="Close">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+    <button class="lb-btn lb-prev lb-nav" type="button" aria-label="Previous photo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>
+    </button>
+    <figure class="lb-stage">
+      <img class="lb-img" alt="">
+      <figcaption class="lb-cap"></figcaption>
+    </figure>
+    <button class="lb-btn lb-next lb-nav" type="button" aria-label="Next photo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+    </button>
+  </div>
 
   <script>
     document.getElementById('theme-toggle').addEventListener('click', function () {
@@ -1210,6 +1448,71 @@
         );
       });
     });
+
+    // Lightbox: every .ph thumbnail opens its full image in the overlay, with
+    // prev/next across all photos on the page, keyboard control, and a focus
+    // return so a keyboard user lands back on the thumbnail they opened.
+    (function () {
+      var thumbs = Array.prototype.slice.call(document.querySelectorAll('.ph'));
+      var box = document.getElementById('lightbox');
+      if (!thumbs.length || !box) return;
+
+      var img = box.querySelector('.lb-img');
+      var cap = box.querySelector('.lb-cap');
+      var navs = box.querySelectorAll('.lb-nav');
+      var single = thumbs.length < 2;
+      var i = 0;
+      var lastFocus = null;
+
+      // Prev/next are pointless with a single photo.
+      if (single) {
+        Array.prototype.forEach.call(navs, function (b) { b.hidden = true; });
+      }
+
+      function show(n) {
+        i = (n + thumbs.length) % thumbs.length;
+        var t = thumbs[i];
+        img.src = t.getAttribute('data-full');
+        img.alt = t.querySelector('img').alt;
+        cap.innerHTML = t.getAttribute('data-cap') || '';
+      }
+
+      function open(n) {
+        lastFocus = document.activeElement;
+        show(n);
+        box.hidden = false;
+        document.body.style.overflow = 'hidden';
+        box.querySelector('.lb-close').focus();
+      }
+
+      function close() {
+        box.hidden = true;
+        document.body.style.overflow = '';
+        img.removeAttribute('src');
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      thumbs.forEach(function (t, n) {
+        t.addEventListener('click', function () { open(n); });
+      });
+
+      box.querySelector('.lb-close').addEventListener('click', close);
+      box.querySelector('.lb-prev').addEventListener('click', function () { show(i - 1); });
+      box.querySelector('.lb-next').addEventListener('click', function () { show(i + 1); });
+
+      // A click on the dark backdrop or the stage padding closes; a click on
+      // the image itself does not.
+      box.addEventListener('click', function (e) {
+        if (e.target === box || e.target.classList.contains('lb-stage')) close();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (box.hidden) return;
+        if (e.key === 'Escape') close();
+        else if (!single && e.key === 'ArrowLeft') show(i - 1);
+        else if (!single && e.key === 'ArrowRight') show(i + 1);
+      });
+    })();
   </script>
 
 </body>
